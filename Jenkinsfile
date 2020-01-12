@@ -14,3 +14,4 @@ pipeline {
         sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./creds/sa-key.json'
       }
     }
+  }
