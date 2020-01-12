@@ -8,5 +8,6 @@ provider "google" {
 terraform {
   backen "gcs" {
     bucket = "jenkins-123-terraform-state"
+    credentials = "sa-key.json"
   }
 }
