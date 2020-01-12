@@ -14,5 +14,13 @@ pipeline {
         sh 'echo $SVC_ACCOUNT_KEY | base64 -d > ./creds/sa-key.json'
       }
     }
-  }
-}
+    
+    stage('TF Plan') {
+       steps {
+         container('terraform') {
+           sh 'terraform init'
+           sh 'terraform plan -out myplan'
+         }
+       }
+     }
+    
