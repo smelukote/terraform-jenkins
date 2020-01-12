@@ -42,6 +42,14 @@ pipeline {
          }
         }
       }
+    stage('TF Destroy') {
+      steps {
+        script {
+         sh 'terraform destroy -input=false myplan'
+         }
+        }
+      }
+    
     }
   }
 
