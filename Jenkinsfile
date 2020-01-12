@@ -5,6 +5,11 @@ pipeline {
             label 'master'
         }
     }
+    
+    environment {
+    SVC_ACCOUNT_KEY = credentials('terraform-auth')
+  }
+
     stages {
 
         stage('terraform started') {
