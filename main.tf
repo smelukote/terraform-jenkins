@@ -5,14 +5,3 @@ provider "google" {
   credentials = "sa-key.json"
 }
 
-/******************************************
-  Provider backend store
-  You must set the local application credentials using :
-  gcloud auth application-default login
- *****************************************/
-terraform {
-  backend "gcs" {
-    bucket = "jenkins-123-terraform-state"
-    prefix = "jenkins-terraform"
-  }
-}
