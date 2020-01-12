@@ -1,45 +1,22 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-        }
-    }
+  agent any
+  environment {
+    JENKINS_DEPLOY = 'true'
+  }
   stages {
-       stage('Build') {
-            steps {
-                withCredentials([[$class: 'FileBinding', credentialsId: 'google-secret-file', variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
-                sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
-                sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
-                }
+    stage('Build') {
+      steps {
+        sh 'printenv'
+        nodejs(nodeJSInstallationName: 'NodeJS 8.11.2 Install') {
+            sh 'npm i'
+            sh 'npm run build'
         }
-        
-        stage('terraform started') {
-            steps {
-                sh 'echo "Started...!" '
-            }
+        withCredentials([[$class: 'FileBinding', credentialsId: 'google-secret-file', variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
+          sh 'echo "${GOOGLE_APPLICATION_CREDENTIALS}"' // returns ****
+          sh 'gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS'
+          sh './deploy.sh'
         }
-        stage('git clone') {
-            steps {
-                sh 'rm -r *;git clone https://github.com/smelukote/terraform-jenkins.git'
-            }
-        }
-        stage('terraform init') {
-            steps {
-                sh 'terraform init ./terraform-jenkins'
-            }
-        }
-        stage('terraform plan') {
-            steps {
-               sh 'terraform  plan ./terraform-jenkins'
-            }
-        }
-        stage('terraform ended') {
-            steps {
-                sh 'echo "Ended....!!"'
-            }
-        }
-
-        
+      }
     }
   }
 }
