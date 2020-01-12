@@ -17,13 +17,13 @@ pipeline {
     
     stage('terraform init') {
             steps {
-               sh 'terraform init'
+               sh 'terraform init ./terraform-jenkins'
             }
          }
     
     stage('terraform plan') {
             steps {
-               sh 'terraform plan'
+               sh 'terraform plan ./terraform-jenkins'
             }
          }
        }
