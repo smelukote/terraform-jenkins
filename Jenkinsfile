@@ -4,7 +4,7 @@ pipeline {
             label 'master'
         }
     }
-    
+  stages {
        stage('Build') {
             steps {
                 withCredentials([[$class: 'FileBinding', credentialsId: 'google-secret-file', variable: 'GOOGLE_APPLICATION_CREDENTIALS']]) {
