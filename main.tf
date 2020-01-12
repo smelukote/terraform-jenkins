@@ -2,12 +2,12 @@ provider "google" {
   project = "jenkins-123-264620"
   region  = "us-west"
   zone    = "us-west1-a"
-  credentials = "sa-key.json"
+  credentials = "serviceaccount.json"
 }
 
 terraform {
   backen "gcs" {
     bucket = "jenkins-123-terraform-state"
-    credentials = "sa-key.json"
+    credentials = "erviceaccount.json"
   }
 }
