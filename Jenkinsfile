@@ -7,7 +7,7 @@ pipeline {
   }
 
   stages {
- stage('Checkout') {
+    stage('Checkout') {
       steps {
         checkout scm
         sh 'mkdir -p creds'
@@ -15,11 +15,12 @@ pipeline {
       }
     }
     
-    stage('terraform plan') {
+    stage('terraform init') {
             steps {
                sh 'terraform init'
             }
          }
+    
     stage('terraform plan') {
             steps {
                sh 'terraform plan'
