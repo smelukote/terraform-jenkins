@@ -5,7 +5,6 @@ pipeline {
             label 'master'
         }
     }
-
     stages {
 
         stage('terraform started') {
