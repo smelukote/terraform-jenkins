@@ -38,6 +38,7 @@ pipeline {
       steps {
          {
           sh 'terraform apply -input=false myplan'
+         }
         }
       }
     }
