@@ -22,11 +22,7 @@ pipeline {
                 sh 'terraform init ./terraform-jenkins'
             }
         }
-        stage('terraform plan') {
-            steps {
-               sh 'terraform  plan ./terraform-jenkins'
-            }
-        }
+        
         stage('terraform ended') {
             steps {
                 sh 'echo "Ended....!!"'
