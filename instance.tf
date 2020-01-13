@@ -3,7 +3,7 @@ resource "google_compute_instance" "default" {
   machine_type = "n1-standard-1"
   zone         = "us-west1-a"
 
-  tags = ["foo", "bar"]
+  tags = ["allow-ssh", "allow-int-http"]
 
   boot_disk {
     initialize_params {
