@@ -23,7 +23,7 @@ pipeline {
     
     stage('terraform plan') {
             steps {
-               sh 'terraform plan -out myplan1'
+               sh 'terraform plan -out myplan2'
             }
          }
          
@@ -38,7 +38,7 @@ pipeline {
     stage('TF Apply') {
       steps {
         script {
-         sh 'terraform apply -input=false myplan1'
+         sh 'terraform apply -input=false myplan2'
          }
         }
       }
