@@ -1,5 +1,5 @@
 resource "google_compute_instance" "default" {
-  name         = "test"
+  name         = "jumpbox"
   machine_type = "n1-standard-1"
   zone         = "us-west1-a"
 
