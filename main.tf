@@ -8,6 +8,7 @@ provider "google" {
 terraform {
   backen "gcs" {
     bucket = "jenkins-123-terraform-state"
+    prefix = "jumpbox"
     credentials = "serviceaccount.json"
   }
 }
