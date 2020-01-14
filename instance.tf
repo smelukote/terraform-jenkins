@@ -1,5 +1,9 @@
+locals {
+  startup_script        = "scripts/startup.sh"
+}
+
 resource "google_compute_instance" "default" {
-  name         = "jumpbox"
+  name         = "jumpbox1"
   machine_type = "n1-standard-1"
   zone         = "us-west1-a"
 
@@ -7,7 +11,7 @@ resource "google_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-9"
+      image = "ubuntu-1604-xenial-v20200108"
     }
   }
 
@@ -28,7 +32,8 @@ resource "google_compute_instance" "default" {
     foo = "bar"
   }
 
-  metadata_startup_script = "echo hi > /test.txt"
+ metadata_startup_script = "${file(local.startup_script)}"
+
 
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
