@@ -42,6 +42,11 @@ pipeline {
          }
         }
       }
+    when (
+      expression {
+        input message: 'Destroy component now?'
+        return.true
+      }
     }
   }
 
