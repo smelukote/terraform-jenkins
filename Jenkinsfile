@@ -56,10 +56,11 @@ pipeline {
                     // slackSend channel: '#ci', color: 'danger', message: "Destroy Failed: ${env.JOB_NAME} - ${env.BUILD_NUMBER} ()"
                     currentBuild.result = 'FAILURE'
                 }
-   
-      }
-    }
-  }
+             }
+           }
+}
+
+          
 
     
  
