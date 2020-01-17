@@ -43,8 +43,7 @@ pipeline {
         }
       }
     
-    if (destroy) {
-                stage name: 'Destroy', concurrency: 1
+     stage name: 'Destroy', concurrency: 1
                 unstash 'plan'
                 if (fileExists("status.destroy")) {
                     sh "rm status.destroy"
