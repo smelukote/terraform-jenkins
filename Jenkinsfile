@@ -39,10 +39,12 @@ pipeline {
       steps {
         script {
          sh 'terraform apply -input=false myplan2'
-         }
         }
       }
+    }
   }
+}
+        
 
 
           
