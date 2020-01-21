@@ -47,6 +47,10 @@ pipeline {
     
     stage('terraform Destroy') {
             steps {
+              
+              script {
+                def userInput = input(id: 'confirm', message: 'Destroy Terraform?',
+                
                sh 'terraform destroy --auto-approve'
             }
          }
