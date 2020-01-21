@@ -52,16 +52,11 @@ pipeline {
                 def userInput = input(id: 'confirm', message: 'Destroy Terraform?',
                 
                sh 'terraform destroy --auto-approve'
-                                      
-                                      
-                                      }
-            }
+                    }
+                  }
+               }                    
+           }
          }
-      }
-}
-        
-
-
           
 
     
