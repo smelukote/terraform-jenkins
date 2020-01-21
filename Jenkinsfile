@@ -42,7 +42,15 @@ pipeline {
         }
       }
     }
-  }
+    
+    
+    
+    stage('terraform Destroy') {
+            steps {
+               sh 'terraform destroy -out myplan2'
+            }
+         }
+      }
 }
         
 
