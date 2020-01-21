@@ -27,7 +27,7 @@ pipeline {
             }
          }
          
-    stage('Approval') {
+    stage('Approval-Apply') {
           steps {
            script {
            def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
@@ -44,7 +44,7 @@ pipeline {
     }
     
     
-    stage('Approval') {
+    stage('Approval-Destroy') {
           steps {
            script {
            def userInput = input(id: 'confirm', message: 'Destroy Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Destroy terraform', name: 'confirm'] ])
