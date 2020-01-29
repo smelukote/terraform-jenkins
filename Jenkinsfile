@@ -1,6 +1,10 @@
 pipeline {
 
-  agent any
+  agent {
+        dockerfile {
+            label 'linux'
+        }
+    }
 
   environment {
     SVC_ACCOUNT_KEY = credentials('terraform-auth')
