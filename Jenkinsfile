@@ -1,7 +1,9 @@
 pipeline {
 
-  agent {
-        dockerfile true
+ agent {
+        dockerfile {
+            label 'linux'
+        }
     }
           
 
